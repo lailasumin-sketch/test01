@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#285640"><title>의성에서, 살다 | 주거 검색 수정본 v2</title><style>:root{font-family:'맑은 고딕','Apple SD Gothic Neo',sans-serif;color:#2b4032;background:#f7f9f4;--green:#285640;--line:#dce5d6}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;color:inherit}a{color:inherit;text-decoration:none}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #b98a46;outline-offset:4px}header,main,footer{max-width:1080px;margin:auto;padding:0 32px}header{height:90px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;letter-spacing:-.8px}.brand>span{background:var(--green);color:white;border-radius:14px 14px 4px 4px;width:32px;height:37px;display:grid;place-items:center;font-family:serif}.header-note{font-size:11px;color:#88977e}.intro{position:relative;padding:48px 0 36px}.eyebrow{font-size:9px;letter-spacing:2px;color:#7f926c;font-weight:700}h1{font-size:38px;letter-spacing:-1.7px;line-height:1.5;margin:18px 0}h1 em{font-style:normal;color:var(--green)}.intro>p{font-size:13px;line-height:1.9;color:#7f8c76}.sample-badge{display:inline-block;margin-top:10px;font-size:10px;padding:7px 12px;color:#7e744e;background:#f0ebda;border-radius:20px}.search-panel{background:white;border:1px solid var(--line);border-radius:10px;padding:25px;margin-top:20px}h2{font-size:20px;letter-spacing:-.6px;margin:12px 0}.help{font-size:11px;color:#85917c;line-height:1.9;margin:13px 0}.text-button{border:0;background:none;font-size:11px;color:#7b8d69;padding:10px 0}.search-panel{background:#eef3e8;margin-top:25px}form{display:grid;grid-template-columns:1.1fr 1fr 1fr auto;gap:14px;align-items:end;margin:24px 0 15px}form label{font-size:12px}form label>span{font-size:10px;color:#8a977e;margin-left:5px}input[type=number],select{display:block;width:100%;height:43px;margin-top:9px;border:1px solid #d3dfc9;border-radius:5px;background:white;padding:10px;color:#3a5530;min-width:0;font-size:12px}.primary{height:43px;border:0;border-radius:5px;background:var(--green);color:white;padding:0 20px;font-size:12px}.examples{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:18px}.examples>span{font-size:10px;color:#87977b;margin-right:5px}.examples button{border:1px solid #d7e2cc;background:white;border-radius:20px;padding:7px 11px;font-size:10px;color:#71895e}.result-section{margin-top:40px}.result-heading{display:flex;justify-content:space-between;align-items:center;gap:15px}.result-heading h2{margin-bottom:9px}#result-status{font-size:12px;color:#7c8d6e}.active-filters{font-size:11px;color:#6c825c;line-height:1.9;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:20px}.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);background:white;border-radius:8px;padding:22px;display:flex;flex-direction:column;min-width:0}.card-area{font-size:11px;color:#658052}.card h3{font-size:18px;line-height:1.6;margin:12px 0 18px;overflow-wrap:anywhere}.card dl{margin:0 0 23px}.card dl>div{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}.card dt{font-size:11px;color:#87957c}.card dd{font-size:15px;font-weight:600;margin:0;color:#38562c}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #e8eee2;padding-top:17px;margin-top:auto}.card-bottom>span{font-size:9px;color:#9a9b80}.detail-button{font-size:11px;color:var(--green);background:none;border:0;padding:0}.empty{grid-column:1/-1;text-align:center;background:#edf2e7;padding:40px 20px;border-radius:8px}.empty h3{font-size:18px}.empty p{font-size:12px;color:#829373;line-height:1.9}.empty .primary{margin-top:10px}footer{margin-top:50px;padding-top:25px;padding-bottom:30px;border-top:1px solid var(--line);display:flex;gap:25px;align-items:center}footer strong{font-size:15px}footer p{font-size:10px;color:#91a083;line-height:1.9}dialog{position:relative;width:min(490px,calc(100% - 32px));max-height:85vh;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:32px;background:#fcfdf9;color:#2b4032}dialog::backdrop{background:#193a2866}.close{position:absolute;right:13px;top:10px;font-size:27px;border:0;background:none;color:#829573}dialog h2{font-size:24px;margin-top:22px;overflow-wrap:anywhere}.detail-note{font-size:12px;color:#839478}#detail-fields{margin-top:25px}#detail-fields>div{display:grid;grid-template-columns:100px minmax(0,1fr);gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}#detail-fields dt{font-size:12px;color:#7c8f6d}#detail-fields dd{font-size:14px;margin:0;overflow-wrap:anywhere}.sample-notice{font-size:11px;background:#f3eedf;color:#897a54;padding:13px;line-height:1.8;margin-top:25px}[hidden]{display:none!important}@media(max-width:760px){header,main,footer{padding-left:20px;padding-right:20px}.header-note{display:none}h1{font-size:31px}.intro{padding-top:34px}.search-panel{padding:20px 16px}form{grid-template-columns:1fr 1fr;gap:18px 12px}form label:first-child{grid-column:1/-1}.primary{grid-column:1/-1}.results{grid-template-columns:1fr}.card{padding:21px}.card dl{display:flex;gap:30px}.card dl>div{display:block;margin:0}.card dd{margin-top:9px;font-size:18px}.result-heading{align-items:flex-start}.result-heading>.text-button{white-space:nowrap;margin-top:10px}.intro>p{font-size:12px}footer{gap:20px}dialog{padding:27px 23px}#detail-fields>div{grid-template-columns:80px minmax(0,1fr)}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head>
+<body>
+<header><a href="#" class="brand"><span>의</span> 의성에서, 살다</a><span class="header-note">주거 검색 · 수정본 v2</span></header>
+<main>
+<section class="intro"><span class="eyebrow">A PLACE FOR YOUR NEXT CHAPTER</span><h1>내 조건에 맞는 집,<br><em>의성에서 찾아보세요.</em></h1><p>살고 싶은 읍·면과 희망 금액을 선택해 보세요.<br>조건에 맞는 주거 정보를 한눈에 확인할 수 있습니다.</p><span class="sample-badge">가상 주택 데이터 · 실제 매물 아님</span></section>
+<section class="search-panel" aria-labelledby="search-title"><span class="eyebrow">01 / FIND YOUR PLACE</span><h2 id="search-title">희망 조건을 선택하세요</h2><form id="housing-form"><label>희망 읍·면<select id="area"><option value="">모든 읍·면</option></select></label><label>월세 상한 <span>만 원</span><input id="rent" type="number" min="0" step="any" placeholder="예: 45" inputmode="decimal"></label><label>보증금 상한 <span>만 원</span><input id="deposit" type="number" min="0" step="any" placeholder="예: 500" inputmode="decimal"></label><button type="submit" class="primary">조건으로 검색 ↗</button></form><p class="help">상한은 입력한 금액 ‘이하’입니다. 금액 입력칸을 비우면 제한하지 않습니다. 금액이 없는 자료는 ‘정보 없음’으로 표시되며 해당 금액 상한을 설정하면 검색 결과에서 제외됩니다.</p><div class="examples"><span>빠른 검색</span><button type="button" id="example-budget">월세 45만 원 이하</button><button type="button" id="example-empty">안계면 · 월세 30만 원 이하</button></div></section>
+<section class="result-section" aria-labelledby="results-title"><div class="result-heading"><div><h2 id="results-title">검색 결과</h2><p id="result-status" role="status" aria-live="polite"></p></div><button id="reset" class="text-button" type="button">검색 조건 초기화 ↻</button></div><p id="active-filters" class="active-filters"></p><div id="results" class="results"></div></section>
+</main>
+<footer><strong>의성에서, 살다</strong><p>의성군 읍·면별 주거 검색 · 수정본 v2 · 가상데이터<br>나에게 맞는 새로운 일상을 찾아보세요.</p></footer>
+<dialog id="detail" aria-labelledby="detail-title"><button id="close-detail" class="close" aria-label="상세 정보 닫기">×</button><span class="eyebrow">HOUSING DETAIL</span><h2 id="detail-title"></h2><p class="detail-note">선택한 주거 정보와 금액을 확인하세요.</p><dl id="detail-fields"></dl><p class="sample-notice">가상데이터입니다. 실제 매물이나 시세를 나타내지 않습니다.</p></dialog>
+<script id="embedded-csv" type="application/json">"﻿읍면,주택명,월세_만원,보증금_만원\r\n안계면,가상주택 A,35,300\r\n봉양면,가상주택 B,45,500\r\n의성읍,가상주택 C,60,1000\r\n"</script>
+<script>const columns=['읍면','주택명','월세_만원','보증금_만원'];
+function parseCSV(text){
+ text=text.replace(/^\uFEFF/,'');
+ const rows=[];let row=[],cell='',quoted=false,closed=false;
+ for(let i=0;i<text.length;i++){
+  const ch=text[i];
+  if(quoted){
+   if(ch==='"'){if(text[i+1]==='"'){cell+='"';i++;}else{quoted=false;closed=true;}}
+   else cell+=ch;
+  }else if(ch==='"'){
+   if(cell||closed)throw new Error('따옴표 위치를 확인해 주세요.');
+   quoted=true;
+  }else if(ch===','){row.push(cell);cell='';closed=false;}
+  else if(ch==='\n'||ch==='\r'){
+   if(ch==='\r'&&text[i+1]==='\n')i++;
+   row.push(cell);rows.push(row);row=[];cell='';closed=false;
+  }else{
+   if(closed)throw new Error('닫는 따옴표 뒤에는 쉼표나 줄바꿈이 필요합니다.');
+   cell+=ch;
+  }
+ }
+ if(quoted)throw new Error('닫히지 않은 따옴표가 있습니다.');
+ if(cell||row.length||closed){row.push(cell);rows.push(row);}
+ return rows.filter(row=>row.some(value=>value.trim()!==''));
+}
+function readHousingCSV(text){
+ const rows=parseCSV(text);
+ if(!rows.length)throw new Error('파일에 머리글이 없습니다.');
+ const headers=rows[0].map(x=>x.trim());
+ if(new Set(headers).size!==headers.length)throw new Error('열 이름이 중복되어 있습니다.');
+ const missing=columns.filter(c=>!headers.includes(c));
+ if(missing.length)throw new Error(`필수 열이 없습니다: ${missing.join(', ')}`);
+ const indexes=columns.map(c=>headers.indexOf(c));
+ const records=rows.slice(1).map((row,index)=>{
+  if(row.length!==headers.length)throw new Error(`${index+2}행의 열 개수가 머리글과 다릅니다. 빈칸도 쉼표로 구분해 주세요.`);
+  const record={};
+  columns.forEach((column,i)=>{
+   const raw=row[indexes[i]].trim();
+   if(!raw){record[column]=null;return;}
+   if(i<2){record[column]=raw;return;}
+   if(!/^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(raw))throw new Error(`${index+2}행 ${column}: 0 이상의 숫자 또는 빈칸을 입력해 주세요. 단위는 만 원입니다.`);
+   const number=Number(raw.replaceAll(',',''));
+   if(!Number.isFinite(number)||number>Number.MAX_SAFE_INTEGER)throw new Error(`${index+2}행의 금액이 처리 가능한 범위를 벗어납니다.`);
+   record[column]=number;
+  });
+  return record;
+ });
+ return {records,headers,ignoredHeaders:headers.filter(c=>!columns.includes(c)),emptyCounts:Object.fromEntries(columns.map(c=>[c,records.filter(r=>r[c]===null).length]))};
+}
+function filterHousing(records,{area='',maxRent=null,maxDeposit=null}={}){
+ return records.filter(r=>(area===''||r['읍면']===area)&&
+  (maxRent===null||r['월세_만원']!==null&&r['월세_만원']<=maxRent)&&
+  (maxDeposit===null||r['보증금_만원']!==null&&r['보증금_만원']<=maxDeposit));
+}
+
+const $=selector=>document.querySelector(selector);
+const initialCSV=JSON.parse($('#embedded-csv').textContent);
+const dataset=readHousingCSV(initialCSV);
+let active={area:'',maxRent:null,maxDeposit:null};
+let visible=12;
+const node=(tag,text,className)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(className)el.className=className;return el;};
+const money=value=>value===null?'정보 없음':`${value.toLocaleString('ko-KR',{maximumFractionDigits:10})}만 원`;
+const text=value=>value===null?'정보 없음':value;
+function resetInputs(){
+ $('#housing-form').reset();active={area:'',maxRent:null,maxDeposit:null};visible=12;
+}
+function populateAreas(){
+ const select=$('#area');select.replaceChildren();
+ const all=node('option','모든 읍·면');all.value='';select.append(all);
+ const places=[...new Set(dataset.records.map(r=>r['읍면']))].sort((a,b)=>(a??'').localeCompare(b??'','ko'));
+ places.forEach(area=>{const option=node('option',text(area));option.value=JSON.stringify(area);select.append(option);});
+}
+function showDetail(record){
+ $('#detail-title').textContent=text(record['주택명']);
+ $('#detail-fields').replaceChildren();
+ for(const column of columns){
+  const row=node('div');row.append(node('dt',column),node('dd',column.endsWith('_만원')?money(record[column]):text(record[column])));
+  $('#detail-fields').append(row);
+ }
+ $('#detail').showModal();
+}
+function renderResults(){
+ const matches=filterHousing(dataset.records,active);
+ $('#result-status').textContent=`전체 ${dataset.records.length.toLocaleString()}건 중 ${matches.length.toLocaleString()}건`;
+ $('#active-filters').textContent=[`지역: ${active.area===''?'전체':text(active.area)}`,`월세: ${active.maxRent===null?'제한 없음':money(active.maxRent)+' 이하'}`,`보증금: ${active.maxDeposit===null?'제한 없음':money(active.maxDeposit)+' 이하'}`].join(' / ');
+ const container=$('#results');container.replaceChildren();
+ if(!matches.length){
+  const empty=node('div',undefined,'empty');
+  empty.append(node('h3',dataset.records.length?'조건에 맞는 주거 정보가 없어요':'등록된 주거 정보가 없습니다'),node('p',dataset.records.length?'상한 금액을 높이거나 지역 선택을 바꿔 보세요. 금액이 없는 자료는 해당 금액 상한 검색에서 제외됩니다.':'현재 제공되는 주거 정보가 없습니다.'));
+  const reset=node('button','검색 조건 초기화','primary');reset.type='button';reset.onclick=resetSearch;empty.append(reset);container.append(empty);
+ }else{
+  matches.slice(0,visible).forEach(record=>{
+   const card=node('article',undefined,'card');
+   card.append(node('span',text(record['읍면']),'card-area'),node('h3',text(record['주택명'])));
+   const dl=node('dl');
+   for(const [label,key] of [['월세','월세_만원'],['보증금','보증금_만원']]){
+    const pair=node('div');pair.append(node('dt',label),node('dd',money(record[key])));dl.append(pair);
+   }
+   card.append(dl);
+   const bottom=node('div',undefined,'card-bottom');
+   const button=node('button','상세보기 ↗','detail-button');button.type='button';
+   button.setAttribute('aria-label',`${text(record['읍면'])} ${text(record['주택명'])} 상세보기`);
+   button.onclick=()=>showDetail(record);
+   bottom.append(node('span','가상데이터 · 실제 매물 아님'),button);card.append(bottom);container.append(card);
+  });
+  if(matches.length>visible){
+   const more=node('button',`더 보기 (${Math.min(visible,matches.length)} / ${matches.length})`,'primary');more.id='load-more';more.type='button';more.onclick=()=>{visible+=12;renderResults();};container.append(more);
+  }
+ }
+}
+function resetSearch(){resetInputs();renderResults();}
+function applySearch(event){
+ if(event)event.preventDefault();
+ if(!$('#housing-form').reportValidity())return;
+ const amount=id=>$(id).value===''?null:Number($(id).value);
+ active={area:$('#area').value===''?'':JSON.parse($('#area').value),maxRent:amount('#rent'),maxDeposit:amount('#deposit')};
+ visible=12;renderResults();
+}
+$('#housing-form').addEventListener('submit',applySearch);
+$('#reset').onclick=resetSearch;
+$('#example-budget').onclick=()=>{resetInputs();$('#rent').value='45';applySearch();};
+$('#example-empty').onclick=()=>{
+ resetInputs();
+ const areaOption=[...$('#area').options].find(o=>o.value===JSON.stringify('안계면'));
+ if(!areaOption)return;
+ $('#area').value=areaOption.value;$('#rent').value='30';applySearch();
+};
+$('#close-detail').onclick=()=>$('#detail').close();
+$('#detail').addEventListener('click',e=>{
+ if(e.target!==$('#detail'))return;
+ const r=e.target.getBoundingClientRect();
+ if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();
+});
+populateAreas();renderResults();
+</script>
+</body></html>
