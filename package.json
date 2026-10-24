@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "start": "python3 -m http.server 3000 --bind 0.0.0.0",
-    "test": "node --test",
+    "test": "node --test tests/search.test.js tests/housing.test.js tests/usb.test.js",
     "build": "node scripts/build.mjs",
-    "build:housing": "node scripts/build-housing.mjs"
+    "build:housing": "node scripts/build-housing.mjs",
+    "build:usb": "node usb/build-usb.mjs"
   }
 }

@@ -2,6 +2,26 @@
 
 의성군 귀농·귀촌을 위한 읍·면별 생활 정보 탐색 웹 시제품입니다. 주거, 농산물, 지원 정보, 취업을 지역·분야·키워드로 함께 검색합니다.
 
+## Windows USB 더블클릭 패키지
+
+`downloads/uiseong-life-windows-usb.zip`을 모두 압축 해제한 뒤
+`uiseong-life-windows-usb` 폴더 전체를 USB로 복사하고 **실행하기.bat**를 더블클릭하세요.
+Windows용 자체 서버(x64·ARM64·x86), dist, 로컬 CSV 432건, 원본 코드, 실행안내서와 검증결과가 포함됩니다.
+대상 PC에 Node.js·Python·Go 설치나 인터넷 연결이 필요하지 않습니다.
+서버 창은 이용 중 열어 두며, 종료 시 Ctrl+C 또는 창을 닫습니다.
+CSV 로딩 실패 시 내장 데이터로 대체하고 화면에 안내합니다.
+Windows 직접 실행 검증은 아직 필요하며, 동봉한 검증결과에서 실제 확인 항목과 구분했습니다.
+
+개발용 생성 명령:
+
+```sh
+npm run build:usb
+python3 scripts/package-windows-usb.py --go /path/to/official/go
+python3 scripts/audit-usb.py usb-submission
+```
+
+기존 GitHub 연결과 Vercel 설정은 그대로 유지합니다.
+
 ## USB에 전체 서비스 저장하기
 
 `downloads/uiseong-life-full-usb.zip`이 네 분야 전체를 포함한 USB 패키지입니다.

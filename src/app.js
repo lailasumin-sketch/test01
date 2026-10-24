@@ -9,11 +9,22 @@ const state={area:'',category:'',query:'',savedOnly:false,saved,preferences:null
 let limit=8;
 const categoryFor=id=>categories.find(c=>c.id===id);
 // Never interpolate user input into HTML. Dynamic search labels use textContent.
+// Escape record text as CSV may contain editable local content.
+const escapeRecordText=value=>String(value??'정보 없음').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function displayRecord(raw){
+ const r={...raw};
+ for(const key of ['area','title','tag','description','crop','level','method','season','target','kind','schedule'])r[key]=raw[key]===undefined||raw[key]===null?'':escapeRecordText(raw[key]);
+ r.features=raw.features.map(escapeRecordText);
+ let url='#';try{const parsed=new URL(raw.source.url);if(parsed.protocol==='https:')url=parsed.href;}catch{}
+ r.source={name:escapeRecordText(raw.source.name),url:escapeRecordText(url)};
+ return r;
+}
+const displayAmount=(value,unit)=>value===null||value===undefined?'정보 없음':`${value.toLocaleString()}${unit}`;
 function facts(r){
- if(r.category==='home')return [`월세 ${r.rent}만 원/월`,`보증금 ${r.deposit}만 원`,`${r.size}㎡`];
+ if(r.category==='home')return [`월세 ${displayAmount(r.rent,'만 원/월')}`,`보증금 ${displayAmount(r.deposit,'만 원')}`,displayAmount(r.size,'㎡')];
  if(r.category==='farm')return [r.crop,r.level,r.method];
  if(r.category==='support')return [`대상: ${r.target}`,r.kind];
- return [`시급 ${r.pay.toLocaleString()}원`,`${r.schedule} 근무`];
+ return [`시급 ${displayAmount(r.pay,'원')}`,`${r.schedule} 근무`];
 }
 function render(){
  $('#area-grid').innerHTML=areas.map(area=>`<button data-area="${area}" class="${state.area===area?'selected':''}" aria-pressed="${state.area===area}">${area}</button>`).join('');
@@ -33,7 +44,8 @@ function render(){
  const filtered=filterRecords(records,state);
  const summary=categories.map(c=>`${c.name} ${filtered.filter(r=>r.category===c.id).length}`).join(' · ');
  $('#result-count').textContent=`${state.area||state.preferences?.area||'의성군 전체'} · ${state.savedOnly?'관심 ':''}가상 정보 ${filtered.length}건 (${summary})`;
- $('#results').innerHTML=filtered.length?filtered.slice(0,limit).map(r=>{
+ $('#results').innerHTML=filtered.length?filtered.slice(0,limit).map(raw=>{
+  const r=displayRecord(raw);
   const c=categoryFor(r.category);
   return `<article class="result-card"><div class="card-top"><span class="tag" style="background:${c.color}">${c.name}</span><button data-save="${r.id}" class="save ${saved.includes(r.id)?'is-saved':''}" aria-label="${r.area} ${r.title} 관심 정보 ${saved.includes(r.id)?'해제':'저장'}" aria-pressed="${saved.includes(r.id)}">${saved.includes(r.id)?'♥':'♡'}</button></div><div class="card-location">${r.area} <span>· ${r.tag}</span></div><h3><button data-detail="${r.id}">${r.title}</button></h3><div class="record-facts">${facts(r).map(f=>`<span>${f}</span>`).join('')}</div><p>${r.description}</p><div class="card-bottom"><span>가상 · 실제 공고 아님</span><button data-detail="${r.id}" aria-label="${r.area} ${r.title} 자세히 보기">자세히 보기 ↗</button></div></article>`;
  }).join(''):'<div class="empty"><span>⌕</span><h3>조건에 맞는 정보가 없어요</h3><p>희망 금액이나 검색어를 조정해 보세요. 지역·분야 필터와 맞춤 조건이 모두 함께 적용됩니다.</p><button id="empty-reset">모든 조건 초기화</button></div>';
@@ -113,7 +125,7 @@ document.addEventListener('click',e=>{
  }
  const detail=e.target.closest('[data-detail]');
  if(detail){
-  const r=records.find(x=>x.id===detail.dataset.detail);const c=categoryFor(r.category);
+  const r=displayRecord(records.find(x=>x.id===detail.dataset.detail));const c=categoryFor(r.category);
   $('#detail-content').innerHTML=`<span class="pill">${r.area} · ${c.name}</span><h2>${r.title}</h2><div class="record-facts">${facts(r).map(f=>`<span>${f}</span>`).join('')}</div><p>${r.description}</p><p>특징: ${r.features.join(' · ')}${r.season?`<br>가상 재배 일정: ${r.season}`:''}</p><div class="detail-notice"><strong>모든 조건과 금액은 가상입니다.</strong><p>실제 매물·채용·지원사업이 아닙니다. 주거비·시급·지원 대상·지역 배치는 시연용이며 실제 제공 여부나 시세를 뜻하지 않습니다.</p></div><h3>다음 단계</h3><p>${r.source.name}에서 지역을 ‘경상북도 의성군’으로 설정하고 실제 정보를 확인하세요. 아래 링크는 개별 공고가 아닌 공식 사이트 첫 화면입니다.</p><a class="source-link" href="${r.source.url}" target="_blank" rel="noopener noreferrer">${r.source.name} 열기 ↗</a>`;
   $('#detail').showModal();return;
  }

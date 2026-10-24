@@ -121,6 +121,7 @@ for record in records:
     writer.writerow(row)
 package = json.loads((root / 'package.json').read_text())
 package['scripts'] = {key: package['scripts'][key] for key in ['start','build','test']}
+package['scripts']['test']='node --test tests/search.test.js'
 base = 'uiseong-life-full/'
 with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
     z.writestr(base + 'index.html', html)

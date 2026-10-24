@@ -71,10 +71,10 @@ export function filterRecords(items,{area='',category='',query='',savedOnly=fals
   if(!preferences)return true;
   const p=preferences;
   if(p.area&&r.area!==p.area||p.categories?.length&&!p.categories.includes(r.category))return false;
-  if(r.category==='home'&&(p.maxRent!==null&&p.maxRent!==undefined&&r.rent>p.maxRent||p.maxDeposit!==null&&p.maxDeposit!==undefined&&r.deposit>p.maxDeposit))return false;
+  if(r.category==='home'&&(p.maxRent!==null&&p.maxRent!==undefined&&(r.rent===null||r.rent===undefined||r.rent>p.maxRent)||p.maxDeposit!==null&&p.maxDeposit!==undefined&&(r.deposit===null||r.deposit===undefined||r.deposit>p.maxDeposit)))return false;
   if(r.category==='farm'&&p.crop&&r.crop!==p.crop)return false;
   if(r.category==='support'&&p.target&&r.target!==p.target&&r.target!=='누구나')return false;
-  if(r.category==='job'&&(p.schedule&&r.schedule!==p.schedule||p.minPay!==null&&p.minPay!==undefined&&r.pay<p.minPay))return false;
+  if(r.category==='job'&&(p.schedule&&r.schedule!==p.schedule||p.minPay!==null&&p.minPay!==undefined&&(r.pay===null||r.pay===undefined||r.pay<p.minPay)))return false;
   return true;
  });
 }
