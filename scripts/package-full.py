@@ -131,7 +131,7 @@ with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
     z.writestr(base + 'source/README.md', source_help)
     z.writestr(base + 'source/package.json', json.dumps(package, ensure_ascii=False, indent=2))
     for file in ['index.html','src/page.html','src/style.css','src/app.js','src/data.js',
-                 'scripts/build.mjs','tests/search.test.js']:
+                 'scripts/build.mjs','tests/search.test.js','vercel.json','.gitignore']:
         z.write(root / file, base + 'source/' + file)
 with zipfile.ZipFile(archive) as z:
     assert z.testzip() is None
